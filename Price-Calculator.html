@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/c6b2e44cfd.js"></script>
+    
+<style>
+   
+    body{
+        padding: 30px;
+        background-color:#1f1f1f;   
+    }
+    .jumbotron{padding: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    }
+    .text-giant{font-size: 40px;}
+</style>
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h2 class="text-center">PRICE CALCULATOR <i class="fa fa-calculator" aria-hidden="true"></i></h2>
+        
+        <form action="">
+
+        <div class="form-group">
+            <label for="price"> <i class="fa fa-credit-card-alt" aria-hidden="true"></i> Price</label>
+            <input type="text" placeholder="Enter the price" name="price" value="" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="quantity"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> Quantity
+            <span class="label label-primary quantity-label"></span>
+            </label>
+            <input type="range" class="form-control-range" name="quantity" value="0" min="0" max="10" step="1">
+        </div>
+       
+        </form>
+        <div class="text-right text-giant total"></div>
+    </div>
+
+    <!--javascript===== ==== ===-->
+    <script>
+        const priceInput=document.querySelector('[name=price]');
+        const quantityInput=document.querySelector('[name=quantity]');
+        const total=document.querySelector('.total');
+        const quantityLabel=document.querySelector('.quantity-label');
+
+        function costrica() {
+            const price     = priceInput.value;
+            const quantity  = quantityInput.value;
+            const cost      = price*quantity;
+            total.innerText= '$'+ cost.toFixed(2);
+        }
+        function qunatizer() {
+            const quantity=quantityInput.value;
+            quantityLabel.innerText =quantity;
+
+        }
+
+        costrica();
+        priceInput.addEventListener('input',costrica);
+        quantityInput.addEventListener('input',costrica);
+        quantityInput.addEventListener('input',qunatizer);
+    </script>
+</body>
+</html>
